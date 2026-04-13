@@ -1,0 +1,937 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Paul Barbaste — Senior AI Applied Engineer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --white: #ffffff;
+    --off-white: #f7f6f3;
+    --light-gray: #e8e6e1;
+    --mid-gray: #9b9890;
+    --dark-gray: #3a3836;
+    --black: #111110;
+    --blue: #1a56db;
+    --blue-light: #e8f0fe;
+    --blue-mid: #b8d0f7;
+    --accent: #1a56db;
+    --radius: 8px;
+    --radius-lg: 14px;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--off-white);
+    color: var(--black);
+    font-size: 15px;
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+    background: rgba(247,246,243,0.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 0.5px solid var(--light-gray);
+    padding: 0 40px;
+    height: 56px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .nav-logo {
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--black);
+    text-decoration: none;
+    letter-spacing: -0.01em;
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 32px;
+    list-style: none;
+  }
+
+  .nav-links a {
+    font-size: 13px;
+    color: var(--mid-gray);
+    text-decoration: none;
+    transition: color 0.15s;
+  }
+
+  .nav-links a:hover { color: var(--black); }
+
+  .container {
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 0 24px;
+  }
+
+  /* HERO */
+  .hero {
+    padding: 120px 0 72px;
+    border-bottom: 0.5px solid var(--light-gray);
+  }
+
+  .hero-inner {
+    display: flex;
+    align-items: flex-start;
+    gap: 32px;
+  }
+
+  .avatar {
+    width: 72px;
+    height: 72px;
+    border-radius: 50%;
+    background: var(--blue-light);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 22px;
+    font-weight: 500;
+    color: var(--blue);
+    flex-shrink: 0;
+    border: 0.5px solid var(--blue-mid);
+  }
+
+  .hero-text { flex: 1; }
+
+  .hero-name {
+    font-size: 28px;
+    font-weight: 500;
+    letter-spacing: -0.03em;
+    line-height: 1.1;
+    margin-bottom: 6px;
+    color: var(--black);
+  }
+
+  .hero-title {
+    font-size: 14px;
+    color: var(--mid-gray);
+    margin-bottom: 16px;
+    font-weight: 400;
+  }
+
+  .hero-bio {
+    font-size: 14px;
+    color: var(--dark-gray);
+    line-height: 1.7;
+    max-width: 520px;
+    margin-bottom: 20px;
+  }
+
+  .hero-links {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 7px 14px;
+    border-radius: var(--radius);
+    font-size: 13px;
+    font-weight: 500;
+    text-decoration: none;
+    transition: all 0.15s;
+    border: 0.5px solid transparent;
+  }
+
+  .btn-primary {
+    background: var(--black);
+    color: var(--white);
+  }
+
+  .btn-primary:hover { background: var(--dark-gray); }
+
+  .btn-secondary {
+    background: var(--white);
+    color: var(--dark-gray);
+    border-color: var(--light-gray);
+  }
+
+  .btn-secondary:hover { border-color: var(--mid-gray); }
+
+  .badges {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-top: 20px;
+  }
+
+  .badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    padding: 4px 10px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 500;
+    background: var(--white);
+    border: 0.5px solid var(--light-gray);
+    color: var(--dark-gray);
+  }
+
+  .badge-blue {
+    background: var(--blue-light);
+    border-color: var(--blue-mid);
+    color: var(--blue);
+  }
+
+  .dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: currentColor;
+    opacity: 0.6;
+  }
+
+  /* SECTIONS */
+  section {
+    padding: 56px 0;
+    border-bottom: 0.5px solid var(--light-gray);
+  }
+
+  .section-label {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--mid-gray);
+    margin-bottom: 28px;
+  }
+
+  /* EXPERIENCE */
+  .exp-list { display: flex; flex-direction: column; gap: 28px; }
+
+  .exp-item {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 4px 16px;
+    align-items: start;
+  }
+
+  .exp-company {
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--black);
+  }
+
+  .exp-role {
+    font-size: 13px;
+    color: var(--mid-gray);
+    margin-bottom: 6px;
+  }
+
+  .exp-desc {
+    font-size: 13px;
+    color: var(--dark-gray);
+    line-height: 1.6;
+    grid-column: 1 / -1;
+  }
+
+  .exp-date {
+    font-size: 12px;
+    color: var(--mid-gray);
+    font-family: 'DM Mono', monospace;
+    white-space: nowrap;
+    padding-top: 2px;
+  }
+
+  .exp-divider {
+    width: 100%;
+    height: 0.5px;
+    background: var(--light-gray);
+    border: none;
+    margin-top: 28px;
+  }
+
+  /* PROJECTS */
+  .projects-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+  }
+
+  .project-card {
+    background: var(--white);
+    border: 0.5px solid var(--light-gray);
+    border-radius: var(--radius-lg);
+    padding: 18px 20px;
+    text-decoration: none;
+    display: block;
+    transition: all 0.15s;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .project-card:hover {
+    border-color: var(--mid-gray);
+    transform: translateY(-1px);
+  }
+
+  .project-card.featured {
+    grid-column: 1 / -1;
+    background: var(--black);
+    border-color: var(--black);
+  }
+
+  .project-tag {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--mid-gray);
+    margin-bottom: 8px;
+  }
+
+  .project-card.featured .project-tag { color: rgba(255,255,255,0.45); }
+
+  .project-name {
+    font-size: 15px;
+    font-weight: 500;
+    color: var(--black);
+    margin-bottom: 6px;
+    letter-spacing: -0.01em;
+  }
+
+  .project-card.featured .project-name { color: var(--white); }
+
+  .project-desc {
+    font-size: 13px;
+    color: var(--mid-gray);
+    line-height: 1.55;
+    margin-bottom: 14px;
+  }
+
+  .project-card.featured .project-desc { color: rgba(255,255,255,0.6); }
+
+  .project-stack {
+    display: flex;
+    gap: 6px;
+    flex-wrap: wrap;
+  }
+
+  .stack-pill {
+    font-size: 11px;
+    padding: 2px 8px;
+    border-radius: 4px;
+    background: var(--off-white);
+    color: var(--dark-gray);
+    font-family: 'DM Mono', monospace;
+    border: 0.5px solid var(--light-gray);
+  }
+
+  .project-card.featured .stack-pill {
+    background: rgba(255,255,255,0.1);
+    color: rgba(255,255,255,0.7);
+    border-color: rgba(255,255,255,0.15);
+  }
+
+  .project-arrow {
+    position: absolute;
+    top: 18px;
+    right: 18px;
+    font-size: 16px;
+    color: var(--light-gray);
+    transition: all 0.15s;
+  }
+
+  .project-card:hover .project-arrow { color: var(--mid-gray); transform: translate(2px,-2px); }
+  .project-card.featured .project-arrow { color: rgba(255,255,255,0.3); }
+  .project-card.featured:hover .project-arrow { color: rgba(255,255,255,0.7); }
+
+  /* AWARDS */
+  .awards-list { display: flex; flex-direction: column; gap: 12px; }
+
+  .award-item {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 14px 16px;
+    background: var(--white);
+    border: 0.5px solid var(--light-gray);
+    border-radius: var(--radius);
+  }
+
+  .award-icon {
+    width: 32px;
+    height: 32px;
+    border-radius: 8px;
+    background: var(--blue-light);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 15px;
+    flex-shrink: 0;
+  }
+
+  .award-name {
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--black);
+  }
+
+  .award-org {
+    font-size: 12px;
+    color: var(--mid-gray);
+  }
+
+  .award-result {
+    margin-left: auto;
+    font-size: 12px;
+    font-family: 'DM Mono', monospace;
+    color: var(--blue);
+    background: var(--blue-light);
+    padding: 2px 8px;
+    border-radius: 4px;
+    white-space: nowrap;
+  }
+
+  /* ABOUT */
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+  }
+
+  .about-card {
+    background: var(--white);
+    border: 0.5px solid var(--light-gray);
+    border-radius: var(--radius);
+    padding: 16px;
+  }
+
+  .about-card-label {
+    font-size: 11px;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.07em;
+    color: var(--mid-gray);
+    margin-bottom: 8px;
+  }
+
+  .about-card-value {
+    font-size: 13px;
+    color: var(--dark-gray);
+    line-height: 1.55;
+  }
+
+  /* CONTACT */
+  .contact-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+    flex-wrap: wrap;
+  }
+
+  .contact-text {
+    font-size: 22px;
+    font-weight: 500;
+    letter-spacing: -0.02em;
+    color: var(--black);
+    line-height: 1.3;
+  }
+
+  .contact-links { display: flex; gap: 10px; flex-wrap: wrap; }
+
+  footer {
+    padding: 28px 0;
+    text-align: center;
+    font-size: 12px;
+    color: var(--mid-gray);
+  }
+
+  /* ANIMATIONS */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(16px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .hero-inner {
+    display: grid;
+    grid-template-columns: 200px 1fr;
+    gap: 48px;
+    align-items: start;
+    animation: fadeUp 0.5s ease both;
+  }
+
+  .hero-sidebar {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+    position: sticky;
+    top: 72px;
+  }
+
+  .hero-photo {
+    width: 160px;
+    height: 160px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 0.5px solid var(--light-gray);
+    display: block;
+  }
+
+  .hero-name-mobile { display: none; text-align: center; }
+  .hero-name-desktop { display: block; }
+  .hero-title-desktop { display: block; }
+
+  .sidebar-links {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    width: 100%;
+  }
+
+  .sidebar-link {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 13px;
+    color: var(--blue);
+    text-decoration: none;
+    padding: 4px 0;
+    border-bottom: 0.5px solid var(--light-gray);
+    transition: color 0.15s;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .sidebar-link:hover { color: var(--dark-gray); }
+
+  .sidebar-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+    justify-content: center;
+  }
+
+  .sidebar-tag {
+    font-size: 11px;
+    padding: 2px 8px;
+    border-radius: 4px;
+    background: var(--blue-light);
+    color: var(--blue);
+    border: 0.5px solid var(--blue-mid);
+    font-weight: 500;
+  }
+
+  .hero-text { padding-top: 4px; }
+
+  @media (max-width: 600px) {
+    .hero-inner { grid-template-columns: 1fr; gap: 24px; }
+    .hero-sidebar { flex-direction: column; align-items: center; }
+    .hero-photo { width: 100px; height: 100px; }
+    .hero-name-mobile { display: block; }
+    .hero-name-desktop { display: none; }
+    .hero-title-desktop { display: none; }
+    .sidebar-links { align-items: center; }
+  }
+
+  @media (max-width: 600px) {
+    nav { padding: 0 20px; }
+    .nav-links { gap: 20px; }
+    .container { padding: 0 16px; }
+    .hero { padding: 88px 0 48px; }
+    .projects-grid { grid-template-columns: 1fr; }
+    .project-card.featured { grid-column: 1; }
+    .about-grid { grid-template-columns: 1fr; }
+    .contact-row { flex-direction: column; align-items: flex-start; }
+    .hero-inner { flex-direction: column; gap: 20px; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-logo" href="#">Paul Barbaste</a>
+  <ul class="nav-links">
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#awards">Awards</a></li>
+    <li><a href="#publications">Publications</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<main>
+
+  <!-- HERO -->
+  <div class="hero">
+    <div class="container">
+      <div class="hero-inner">
+
+        <!-- LEFT COLUMN: photo + links -->
+        <div class="hero-sidebar">
+          <img src="https://pbs.twimg.com/profile_images/1574430017899077634/mmAGADU4_400x400.jpg" alt="Paul Barbaste" class="hero-photo">
+          <div class="hero-name-mobile">
+            <h1 class="hero-name">Paul Barbaste</h1>
+            <p class="hero-title">Senior AI Applied Engineer<br>Forward Deployed · Paris 🇫🇷</p>
+          </div>
+          <div class="sidebar-links">
+            <a class="sidebar-link" href="#" id="email-link" onclick="this.href='mai'+'lto:'+'paulbarbaste'+'@'+'gmail.com'">
+              <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 7 10 7 10-7"/></svg>
+              paulbarbaste [at] gmail [dot] com
+            </a>
+            <a class="sidebar-link" href="https://linkedin.com/in/paulbarbaste" target="_blank">
+              <svg width="14" height="14" fill="currentColor" viewBox="0 0 24 24"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg>
+              LinkedIn
+            </a>
+            <a class="sidebar-link" href="https://github.com/Paulhb7" target="_blank">
+              <svg width="14" height="14" fill="currentColor" viewBox="0 0 24 24"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+              GitHub
+            </a>
+            <a class="sidebar-link" href="https://paulhb7.github.io" target="_blank">
+              <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+              Portfolio
+            </a>
+          </div>
+          <div class="sidebar-tags">
+            <span class="sidebar-tag">AI Agents</span>
+            <span class="sidebar-tag">MCP Servers</span>
+            <span class="sidebar-tag">GenAI</span>
+            <span class="sidebar-tag">BCI</span>
+            <span class="sidebar-tag">Neurotech</span>
+          </div>
+        </div>
+
+        <!-- RIGHT COLUMN: bio -->
+        <div class="hero-text">
+          <h1 class="hero-name hero-name-desktop">Paul Barbaste</h1>
+          <p class="hero-title hero-title-desktop">Senior AI Applied Engineer · Forward Deployed · Paris 🇫🇷</p>
+          <p class="hero-bio">
+            I build AI agents and agentic systems that ship to production. Co-founder & CTO of <strong>Inclusive Brains</strong>, where I developed the brain-computer interface platform that powered the Paris 2024 Olympic flame relay — enabling Nathalie Labrégère to carry the flame using only facial expressions and brainwaves.
+          </p>
+          <p class="hero-bio" style="margin-top:12px;">
+            Currently leading applied AI engineering at <strong>Wavestone</strong> (FDE & AI Lab Tech Lead) and teaching neurosciences & AI at <strong>HEC Paris / École Polytechnique</strong>. IBM Techxchange 1st place · HuggingFace 2nd place · NASA Global Nominee · Top 100 French Inventors (Le Point).
+          </p>
+
+          <div style="margin-top:20px;">
+            <p style="font-size:12px;font-weight:500;text-transform:uppercase;letter-spacing:0.07em;color:var(--mid-gray);margin-bottom:10px;">Research interests</p>
+            <p style="font-size:13px;color:var(--dark-gray);line-height:1.6;">AI Agents & Agentic Systems · MCP Server Development · Brain-Computer Interfaces · LLMs in Production · Generative AI · Neurotechnology</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- EXPERIENCE -->
+  <section id="experience">
+    <div class="container">
+      <p class="section-label">Experience</p>
+      <div class="exp-list">
+
+        <div class="exp-item">
+          <div>
+            <div class="exp-company">Wavestone</div>
+            <div class="exp-role">Senior AI Applied Engineer (FDE) & AI Lab Tech Lead</div>
+          </div>
+          <div class="exp-date">Jan 2025 — now</div>
+          <p class="exp-desc">Designing and deploying agentic AI applications (Terraform Agents, Jira Support Agents) for enterprise clients in Energy and Banking. Built Wavestone's internal Agentic Platform and MCP server infrastructure. Wrote the company's AI Agentic Playbook.</p>
+        </div>
+
+        <hr class="exp-divider">
+
+        <div class="exp-item">
+          <div>
+            <div class="exp-company">HEC Paris · École Polytechnique</div>
+            <div class="exp-role">Head of Track — Neurosciences & AI</div>
+          </div>
+          <div class="exp-date">2023 — now</div>
+          <p class="exp-desc">Designing and running the neurosciences & AI curriculum. Lecturer coordination, course supervision, and curriculum design for graduate students.</p>
+        </div>
+
+        <hr class="exp-divider">
+
+        <div class="exp-item">
+          <div>
+            <div class="exp-company">Inclusive Brains</div>
+            <div class="exp-role">CTO & Co-Founder → AI Researcher</div>
+          </div>
+          <div class="exp-date">2021 — now</div>
+          <p class="exp-desc">Built a brain-computer interface platform integrating real-time EEG classification with LLMs. Developed the exoskeleton control platform used at the Paris 2024 Olympic flame relay. Research collaboration with IBM on quantum machine learning.</p>
+        </div>
+
+
+
+      </div>
+    </div>
+  </section>
+
+  <!-- PROJECTS -->
+  <section id="projects">
+    <div class="container">
+      <p class="section-label">Projects</p>
+      <div class="projects-grid">
+
+        <!-- 1. PROMETHEUS BCI — featured -->
+        <a class="project-card featured" href="https://github.com/inclusive-brains/prometheus-bci" target="_blank">
+          <span class="project-arrow">↗</span>
+          <div class="project-tag">Prometheus BCI · Agentic Neurotech · Olympic Games Paris 2024</div>
+          <div class="project-name">Prometheus BCI — Adaptive Neurotech Platform</div>
+          <p class="project-desc">Adaptive neurotech platform powering the exoskeleton that allowed Nathalie Labrégère — living with severe motor disabilities — to carry the Olympic flame in Marseille using facial expressions and brainwaves.</p>
+          <div class="project-stack">
+            <span class="stack-pill">Python</span>
+            <span class="stack-pill">EEG</span>
+            <span class="stack-pill">Riemannian Geometry</span>
+            <span class="stack-pill">BCI</span>
+            <span class="stack-pill">AI Agents</span>
+            <span class="stack-pill">GenAI</span>
+            <span class="stack-pill">Timeflux</span>
+          </div>
+        </a>
+
+        <!-- 2. THE ASTRONOMISTS -->
+        <a class="project-card" href="https://github.com/Paulhb7/the-astronomists-nasa-space-app-challenge-2025" target="_blank">
+          <span class="project-arrow">↗</span>
+          <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:8px;">
+            <div class="project-tag" style="margin:0;">The Astronomists · AI Agents · NASA Space Apps 2025</div>
+            <span style="font-size:11px;font-weight:500;background:#ebf8ff;color:#2b6cb0;border:0.5px solid #bee3f8;padding:2px 8px;border-radius:4px;">🌍 Global Nominee</span>
+          </div>
+          <div class="project-name">The Astronomists — Agentic Space Platform</div>
+          <p class="project-desc">NASA Space Apps Challenge 2025 — AI agent platform for astronomy data analysis, built in 48 hours.</p>
+          <div class="project-stack">
+            <span class="stack-pill">Python</span>
+            <span class="stack-pill">AI Agents</span>
+            <span class="stack-pill">GenAI</span>
+            <span class="stack-pill">NASA APIs</span>
+          </div>
+        </a>
+
+        <!-- 3. CLIMATE AI HIVE -->
+        <a class="project-card" href="https://github.com/Paulhb7/climate-ai-hive-sdg11" target="_blank">
+          <span class="project-arrow">↗</span>
+          <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:8px;">
+            <div class="project-tag" style="margin:0;">Climate AI Hive · AI Agents · SDG 11</div>
+            <span style="font-size:11px;font-weight:500;background:#f0fff4;color:#276749;border:0.5px solid #9ae6b4;padding:2px 8px;border-radius:4px;">🏆 IBM — 1st place</span>
+          </div>
+          <div class="project-name">Climate AI Hive — Multi-Agent Platform</div>
+          <p class="project-desc">Multi-agent AI system for sustainable cities aligned with UN SDG 11. Built for IBM Techxchange AI Agent Hackathon.</p>
+          <div class="project-stack">
+            <span class="stack-pill">Python</span>
+            <span class="stack-pill">AI Agents</span>
+            <span class="stack-pill">GenAI</span>
+            <span class="stack-pill">Multi-agent</span>
+            <span class="stack-pill">IBM</span>
+          </div>
+        </a>
+
+        <!-- 4. SENTINEL ONE -->
+        <a class="project-card" href="https://huggingface.co/spaces/Wavestone-AgenticAI-Team/Sentinel_One" target="_blank">
+          <span class="project-arrow">↗</span>
+          <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:8px;">
+            <div class="project-tag" style="margin:0;">Sentinel One · Agentic Platform · Enterprise</div>
+            <span style="font-size:11px;font-weight:500;background:#fef9e7;color:#b7791f;border:0.5px solid #f6d860;padding:2px 8px;border-radius:4px;">🥈 HuggingFace — 2nd place</span>
+          </div>
+          <div class="project-name">Sentinel One — AI Agentic Platform</div>
+          <p class="project-desc">Agentic AI security platform built at Wavestone, deployed for enterprise clients. Live demo on HuggingFace Spaces.</p>
+          <div class="project-stack">
+            <span class="stack-pill">Python</span>
+            <span class="stack-pill">AI Agents</span>
+            <span class="stack-pill">GenAI</span>
+            <span class="stack-pill">MCP</span>
+            <span class="stack-pill">LLMs</span>
+          </div>
+        </a>
+
+        <!-- 5. ORPHAFOLD -->
+        <a class="project-card" href="https://github.com/Paulhb7/orphafold" target="_blank">
+          <span class="project-arrow">↗</span>
+          <div class="project-tag">OrphaFold · AI Agents · BioAI · Research</div>
+          <div class="project-name">OrphaFold — Rare Disease AI Agent</div>
+          <p class="project-desc">AI agent for rare disease research, leveraging protein folding models and GenAI for orphan disease analysis.</p>
+          <div class="project-stack">
+            <span class="stack-pill">Python</span>
+            <span class="stack-pill">AI Agents</span>
+            <span class="stack-pill">GenAI</span>
+            <span class="stack-pill">AlphaFold</span>
+            <span class="stack-pill">BioPython</span>
+          </div>
+        </a>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- AWARDS -->
+  <section id="awards">
+    <div class="container">
+      <p class="section-label">Awards & Recognition</p>
+      <div class="awards-list">
+
+        <div class="award-item">
+          <div class="award-icon">🏆</div>
+          <div>
+            <div class="award-name">IBM Techxchange AI Agent Hackathon</div>
+            <div class="award-org">IBM</div>
+          </div>
+          <div class="award-result">1st place</div>
+        </div>
+
+        <div class="award-item">
+          <div class="award-icon">🥈</div>
+          <div>
+            <div class="award-name">HuggingFace MCP & Agent Hackathon</div>
+            <div class="award-org">Hugging Face</div>
+          </div>
+          <div class="award-result">2nd place</div>
+        </div>
+
+        <div class="award-item">
+          <div class="award-icon">🌍</div>
+          <div>
+            <div class="award-name">NASA App Challenge</div>
+            <div class="award-org">NASA</div>
+          </div>
+          <div class="award-result">Global Nominee</div>
+        </div>
+
+        <div class="award-item">
+          <div class="award-icon">📰</div>
+          <div>
+            <div class="award-name">Top 100 French Inventors — AI Category</div>
+            <div class="award-org">Le Point</div>
+          </div>
+          <div class="award-result">Top 100</div>
+        </div>
+
+        <div class="award-item">
+          <div class="award-icon">🎓</div>
+          <div>
+            <div class="award-name">X-GRANT High Impact & X-IMPACT Tech</div>
+            <div class="award-org">Fondation Polytechnique</div>
+          </div>
+          <div class="award-result">Laureate</div>
+        </div>
+
+        <div class="award-item">
+          <div class="award-icon">💡</div>
+          <div>
+            <div class="award-name">Prix Coup de Pouce</div>
+            <div class="award-org">HEC · Fondation Le Roch</div>
+          </div>
+          <div class="award-result">Laureate</div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <div class="container">
+      <p class="section-label">About</p>
+      <div class="about-grid">
+        <div class="about-card">
+          <div class="about-card-label">Education</div>
+          <div class="about-card-value">HEC Paris · École Polytechnique<br><span style="color:var(--mid-gray);font-size:12px;">Double degree · Health Tech, AI & Neurotechnologies</span><br><br>Sciences Po Strasbourg<br><span style="color:var(--mid-gray);font-size:12px;">Master · European & International Studies</span></div>
+        </div>
+        <div class="about-card">
+          <div class="about-card-label">Focus areas</div>
+          <div class="about-card-value">AI Agents & MCP Servers<br>Brain-Computer Interfaces<br>LLMs in Production<br>Neuroscience & AI Education</div>
+        </div>
+        <div class="about-card">
+          <div class="about-card-label">Languages</div>
+          <div class="about-card-value">French — Native<br>English — Fluent<br>Spanish — Intermediate</div>
+        </div>
+        <div class="about-card">
+          <div class="about-card-label">Hobbies</div>
+          <div class="about-card-value">Triathlon · Piano<br>Robotics · Neurosciences<br>Projet JEDI</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PUBLICATIONS -->
+  <section id="publications">
+    <div class="container">
+      <p class="section-label">Publications & Patents</p>
+      <div class="exp-list">
+
+        <div class="exp-item">
+          <div>
+            <div class="exp-company">Hardware-agnostic multimodal brain-computer interface powered by a generative artificial intelligence neural foundation model and cognitive AI agents</div>
+            <div class="exp-role"><a href="https://patents.google.com/patent/US12554328B2/en" target="_blank" style="color:var(--blue);text-decoration:none;">US Patent US12554328B2 · USPTO</a></div>
+          </div>
+          <div class="exp-date">Patent</div>
+        </div>
+
+        <hr class="exp-divider">
+
+        <div class="exp-item">
+          <div>
+            <div class="exp-company">Inside coding agents: a comprehensive review of SWE agentic systems</div>
+            <div class="exp-role">To be published · May 2026</div>
+          </div>
+          <div class="exp-date">2026</div>
+        </div>
+
+        <hr class="exp-divider">
+
+        <div class="exp-item">
+          <div>
+            <div class="exp-company">Improving consciousness assessment through neuroadaptive artificial intelligence and quantum-enhanced brain-computer interfaces</div>
+            <div class="exp-role">Clinical Neurology and Neurosurgery</div>
+          </div>
+          <div class="exp-date">2026</div>
+        </div>
+
+        <hr class="exp-divider">
+
+        <div class="exp-item">
+          <div>
+            <div class="exp-company">Rethinking generalized BCIs: benchmarking 340,000+ unique algorithmic configurations for EEG mental command decoding</div>
+            <div class="exp-role"><a href="https://arxiv.org" target="_blank" style="color:var(--blue);text-decoration:none;">arXiv</a></div>
+          </div>
+          <div class="exp-date">2025</div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <div class="container">
+      <div class="contact-row">
+        <p class="contact-text">Let's work<br>together.</p>
+        <div class="contact-links">
+          <a class="btn btn-primary" href="#" onclick="this.href='mai'+'lto:'+'paulbarbaste'+'@'+'gmail.com'">paulbarbaste [at] gmail [dot] com</a>
+          <a class="btn btn-secondary" href="https://github.com/Paulhb7" target="_blank">GitHub</a>
+          <a class="btn btn-secondary" href="https://linkedin.com/in/paulbarbaste" target="_blank">LinkedIn</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="container">
+    <p>Paul Barbaste · Paris, France · 2026</p>
+  </div>
+</footer>
+
+</body>
+</html>
