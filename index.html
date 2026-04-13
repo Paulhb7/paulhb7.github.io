@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -11,7 +12,7 @@
 <meta property="og:type" content="website">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -199,10 +200,13 @@
     border-radius: 999px;
     font-size: 12px; letter-spacing: 0.04em;
     color: var(--text-on-dark-mute);
-    margin-bottom: 36px;
+    margin-top: 20px;
     backdrop-filter: blur(8px);
     background: rgba(255,255,255,0.03);
   }
+
+  .hero-right { display: flex; flex-direction: column; align-items: flex-start; }
+  .hero-eyebrow-right { margin-top: 16px; margin-left: 4px; }
 
   .hero-eyebrow .dot {
     width: 8px; height: 8px; border-radius: 50%;
@@ -214,12 +218,12 @@
     display: grid;
     grid-template-columns: minmax(0, 1fr) 360px;
     gap: 80px;
-    align-items: end;
+    align-items: start;
   }
 
   .hero-headline {
     font-family: 'Inter', sans-serif;
-    font-size: clamp(48px, 7.4vw, 104px);
+    font-size: clamp(34px, 4.6vw, 64px);
     font-weight: 400;
     line-height: 0.98;
     letter-spacing: -0.04em;
@@ -354,7 +358,7 @@
   .research-strip-label {
     font-size: 11px; font-weight: 500;
     text-transform: uppercase; letter-spacing: 0.14em;
-    color: var(--text-on-dark-faint);
+    color: var(--text-on-dark);
     flex-shrink: 0;
     padding-right: 24px;
     border-right: 1px solid rgba(255,255,255,0.1);
@@ -419,12 +423,31 @@
 
   .exp-item {
     display: grid;
-    grid-template-columns: 200px 1fr auto;
-    gap: 0 56px;
+    grid-template-columns: 180px 56px 1fr auto;
+    gap: 0 32px;
     padding: 36px 0;
     border-top: 1px solid rgba(255,255,255,0.08);
     align-items: start;
   }
+
+  .exp-logo {
+    width: 48px; height: 48px;
+    border-radius: 12px;
+    background: var(--ink);
+    display: flex; align-items: center; justify-content: center;
+    color: var(--paper);
+    font-weight: 600; font-size: 15px;
+    letter-spacing: -0.01em;
+    flex-shrink: 0;
+    overflow: hidden;
+    border: 1px solid var(--line-light);
+  }
+
+  .exp-logo img { width: 100%; height: 100%; object-fit: contain; padding: 8px; background: #fff; }
+
+  .exp-logo.logo-wavestone { background: #0033A0; color: #fff; }
+  .exp-logo.logo-inclusive { background: #E4002B; color: #fff; }
+  .exp-logo.logo-hec { background: #0a0b0d; color: #fff; font-size: 11px; letter-spacing: 0.05em; }
   .section-light .exp-item { border-top-color: var(--line-light); }
   .exp-item:last-child { border-bottom: 1px solid rgba(255,255,255,0.08); }
   .section-light .exp-item:last-child { border-bottom-color: var(--line-light); }
@@ -470,6 +493,107 @@
   }
   .section-light .exp-arrow { border-color: var(--line-light); color: var(--text-on-light-mute); }
   .exp-item:hover .exp-arrow { border-color: var(--grad-cyan); color: var(--grad-cyan); transform: rotate(-45deg); }
+
+  /* ─── SKILLS ─── */
+  .mono { font-family: 'JetBrains Mono', 'Menlo', 'Monaco', monospace; }
+
+  .skills-terminal {
+    background: #0e1014;
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: var(--radius);
+    overflow: hidden;
+    font-family: 'JetBrains Mono', 'Menlo', 'Monaco', monospace;
+  }
+
+  .terminal-bar {
+    display: flex; align-items: center;
+    padding: 14px 20px;
+    background: rgba(255,255,255,0.03);
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+    gap: 10px;
+  }
+
+  .terminal-dot { width: 11px; height: 11px; border-radius: 50%; }
+  .terminal-dot.r { background: #ff5f57; }
+  .terminal-dot.y { background: #febc2e; }
+  .terminal-dot.g { background: #28c840; }
+
+  .terminal-filename {
+    margin-left: 14px;
+    font-size: 12px;
+    color: var(--text-on-dark-faint);
+    font-family: 'JetBrains Mono', monospace;
+  }
+
+  .terminal-body {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0;
+  }
+
+  .terminal-body > .skill-block {
+    padding: 28px 32px;
+    border-right: 1px solid rgba(255,255,255,0.04);
+    border-bottom: 1px solid rgba(255,255,255,0.04);
+  }
+  .terminal-body > .skill-block:nth-child(2n) { border-right: none; }
+  .terminal-body > .skill-block:nth-last-child(-n+2) { border-bottom: none; }
+
+  .skill-block-title {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--text-on-dark);
+    margin-bottom: 18px;
+    letter-spacing: 0;
+  }
+
+  .skill-block-title::before {
+    content: '# ';
+    color: var(--grad-cyan);
+    font-weight: 400;
+  }
+
+  .skill-row { margin-bottom: 14px; }
+  .skill-row:last-child { margin-bottom: 0; }
+
+  .skill-row-label {
+    font-size: 11px;
+    color: var(--text-on-dark-faint);
+    margin-bottom: 8px;
+    font-weight: 400;
+  }
+
+  .skill-row-label::before {
+    content: '// ';
+    color: #6b6960;
+  }
+
+  .skill-tokens {
+    display: flex; flex-wrap: wrap;
+    gap: 6px 4px;
+    font-size: 12.5px;
+    line-height: 1.9;
+  }
+
+  .skill-tokens .tok {
+    padding: 2px 8px;
+    border-radius: 4px;
+    background: rgba(111,227,255,0.06);
+    color: var(--grad-cyan);
+    border: 1px solid rgba(111,227,255,0.15);
+    transition: all 0.15s;
+  }
+
+  .skill-tokens .tok.v { background: rgba(179,136,255,0.06); color: var(--grad-violet); border-color: rgba(179,136,255,0.15); }
+  .skill-tokens .tok.m { background: rgba(255,123,213,0.06); color: var(--grad-magenta); border-color: rgba(255,123,213,0.15); }
+  .skill-tokens .tok.a { background: rgba(255,179,107,0.06); color: var(--grad-amber); border-color: rgba(255,179,107,0.15); }
+  .skill-tokens .tok.g { background: rgba(126,231,135,0.06); color: #7EE787; border-color: rgba(126,231,135,0.15); }
+
+  .skill-tokens .tok:hover {
+    background: rgba(255,255,255,0.08);
+    color: var(--text-on-dark);
+    border-color: rgba(255,255,255,0.2);
+  }
 
   /* ─── PROJECTS ─── */
   .projects-grid {
@@ -613,68 +737,170 @@
   }
 
   /* ─── AWARDS ─── */
-  .awards-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 16px;
-  }
+  .awards-list { display: flex; flex-direction: column; }
 
-  .award-card {
-    background: var(--paper-soft);
-    border: 1px solid var(--line-light);
-    border-radius: var(--radius);
-    padding: 32px;
-    transition: all 0.3s;
-    position: relative;
-    overflow: hidden;
-  }
-
-  .award-card::before {
-    content: ''; position: absolute;
-    top: 0; left: 0; right: 0; height: 1px;
-    background: var(--signature);
-    opacity: 0; transition: opacity 0.3s;
-  }
-
-  .award-card:hover {
-    transform: translateY(-3px);
-    border-color: transparent;
-    box-shadow: 0 12px 32px rgba(10,11,13,0.08);
-  }
-
-  .award-card:hover::before { opacity: 1; }
-
-  .award-icon {
-    width: 44px; height: 44px;
-    border-radius: 12px;
-    background: var(--ink);
-    color: var(--paper);
-    display: flex; align-items: center; justify-content: center;
-    font-size: 18px;
-    margin-bottom: 24px;
-  }
-
-  .award-name {
-    font-size: 17px;
+  .awards-subheading {
+    display: flex; align-items: center; gap: 14px;
+    margin-top: 48px;
+    margin-bottom: 8px;
+    font-family: 'JetBrains Mono', 'Menlo', monospace;
+    font-size: 12px;
     font-weight: 500;
-    letter-spacing: -0.01em;
-    color: var(--text-on-light);
-    margin-bottom: 6px;
-    line-height: 1.3;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    color: var(--text-on-light-faint);
   }
 
-  .award-org {
+  .awards-subheading:first-child { margin-top: 0; }
+
+  .awards-subheading::before {
+    content: ''; width: 28px; height: 1px;
+    background: currentColor;
+  }
+
+  .award-row {
+    display: grid;
+    grid-template-columns: 110px 80px 1fr auto;
+    gap: 32px;
+    padding: 28px 0;
+    border-top: 1px solid var(--line-light);
+    align-items: start;
+    transition: padding 0.25s;
+  }
+
+  .award-desc {
+    font-size: 13px;
+    color: var(--text-on-light-mute);
+    line-height: 1.55;
+    margin-top: 6px;
+  }
+
+  .award-desc .award-project {
+    color: var(--text-on-light);
+    font-weight: 500;
+  }
+  .award-row:last-child { border-bottom: 1px solid var(--line-light); }
+  .award-row:hover { padding-left: 6px; }
+
+  .award-rank {
+    font-family: 'JetBrains Mono', 'Menlo', monospace;
+    font-size: 11px; font-weight: 500;
+    color: var(--text-on-light);
+    padding: 4px 10px;
+    border: 1px solid var(--text-on-light);
+    border-radius: 4px;
+    width: fit-content;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+  }
+
+  .award-rank.rank-gold {
+    background: var(--text-on-light);
+    color: var(--paper);
+  }
+
+  .award-year {
+    font-family: 'JetBrains Mono', 'Menlo', monospace;
     font-size: 13px;
     color: var(--text-on-light-faint);
-    margin-bottom: 18px;
   }
 
-  .award-result {
-    font-size: 12px; font-weight: 500;
+  .award-title {
+    font-size: 18px;
+    font-weight: 400;
+    letter-spacing: -0.01em;
     color: var(--text-on-light);
-    border-bottom: 1px solid var(--text-on-light);
-    padding-bottom: 1px;
+    line-height: 1.35;
   }
+
+  .award-title .award-sep {
+    color: var(--text-on-light-faint);
+    margin: 0 8px;
+    font-weight: 300;
+  }
+
+  .award-title .award-org-inline {
+    color: var(--text-on-light-mute);
+    font-size: 14px;
+  }
+
+  .award-mark {
+    width: 8px; height: 8px;
+    border-radius: 50%;
+    background: var(--text-on-light-faint);
+    opacity: 0.4;
+    transition: all 0.25s;
+  }
+  .award-row:hover .award-mark {
+    background: var(--grad-violet);
+    opacity: 1;
+    box-shadow: 0 0 0 4px rgba(179,136,255,0.2);
+  }
+
+  /* ─── MEDIA ─── */
+  .media-list { display: flex; flex-direction: column; }
+
+  .media-item {
+    display: grid;
+    grid-template-columns: 80px 1fr auto;
+    gap: 32px;
+    padding: 28px 0;
+    border-top: 1px solid var(--line-light);
+    align-items: start;
+    text-decoration: none;
+    color: inherit;
+    transition: padding 0.25s;
+  }
+  .media-item:last-child { border-bottom: 1px solid var(--line-light); }
+  .media-item:hover { padding-left: 6px; }
+
+  .media-date {
+    font-size: 14px;
+    color: var(--text-on-light-faint);
+    padding-top: 3px;
+  }
+
+  .media-outlet-badge {
+    display: inline-block;
+    font-size: 10px; font-weight: 500;
+    padding: 3px 10px;
+    border-radius: 999px;
+    margin-right: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    vertical-align: middle;
+    border: 1px solid var(--line-light);
+    color: var(--text-on-light-mute);
+    background: rgba(0,0,0,0.02);
+  }
+
+  .media-title {
+    font-size: 18px;
+    font-weight: 400;
+    letter-spacing: -0.01em;
+    color: var(--text-on-light);
+    line-height: 1.4;
+    margin-bottom: 6px;
+    transition: color 0.2s;
+  }
+
+  .media-item:hover .media-title { color: #0a0b0d; }
+  .media-item:hover .media-title-text { background-image: linear-gradient(currentColor, currentColor); background-size: 100% 1px; background-repeat: no-repeat; background-position: 0 100%; }
+
+  .media-excerpt {
+    font-size: 13px;
+    color: var(--text-on-light-mute);
+    line-height: 1.55;
+  }
+
+  .media-arrow {
+    width: 36px; height: 36px; border-radius: 50%;
+    border: 1px solid var(--line-light);
+    display: flex; align-items: center; justify-content: center;
+    color: var(--text-on-light-mute);
+    transition: all 0.25s;
+  }
+  .media-item:hover .media-arrow { border-color: var(--text-on-light); color: var(--text-on-light); transform: rotate(-45deg); }
 
   /* ─── PUBLICATIONS ─── */
   .pub-grid { display: flex; flex-direction: column; }
@@ -890,9 +1116,18 @@
     .projects-grid { grid-template-columns: 1fr; }
     .project-card.featured { grid-column: 1; }
     .project-card.featured .project-name { font-size: 28px; }
-    .awards-grid { grid-template-columns: 1fr 1fr; }
+    .award-row { grid-template-columns: auto 1fr; gap: 12px 16px; }
+    .award-row .award-year { grid-column: 2; }
+    .award-row .award-title { grid-column: 1 / -1; }
+    .award-row .award-mark { display: none; }
+    .terminal-body { grid-template-columns: 1fr; }
+    .terminal-body > .skill-block { border-right: none; }
+    .media-item { grid-template-columns: 1fr; gap: 8px; }
+    .media-item .media-arrow { display: none; }
     .nav-links { display: none; }
-    .exp-item { grid-template-columns: 1fr; gap: 12px; }
+    .exp-item { grid-template-columns: 56px 1fr; gap: 16px; }
+    .exp-item .exp-date { grid-column: 2; }
+    .exp-item > div:nth-child(3) { grid-column: 2; }
     .exp-arrow { display: none; }
     .pub-item { grid-template-columns: 1fr; gap: 12px; }
     .pub-arrow { display: none; }
@@ -923,8 +1158,10 @@
     <div class="nav-links">
       <a href="#about">About</a>
       <a href="#experience">Experience</a>
+      <a href="#skills">Skills</a>
       <a href="#projects">Projects</a>
       <a href="#awards">Awards</a>
+      <a href="#media">Media</a>
       <a href="#publications">Research</a>
       <a href="#contact">Contact</a>
     </div>
@@ -937,23 +1174,21 @@
     <div class="grain"></div>
   </div>
   <div class="hero-inner">
-    <div class="hero-eyebrow fade-in">
-      <span class="dot"></span>
-      Senior AI Applied Engineer - Forward Deployed · Paris
-    </div>
-
     <div class="hero-grid">
       <div>
         <h1 class="hero-headline fade-in stagger-1">
-          Building <span class="serif grad">agentic</span><br>
-          systems that<br>
-          <span class="grad">ship to production.</span>
+          Shipping agentic systems,<br>
+          from the <span class="serif grad">lab</span><br>
+          to <span class="grad">production.</span>
         </h1>
         <p class="hero-sub fade-in stagger-2">
-          <strong>Co-founder & CTO of Inclusive Brains</strong> — where I built the brain-computer interface platform that powered the Paris 2024 Olympic flame relay, enabling Nathalie Labrégère to carry the flame using only facial expressions and brainwaves.
+          Currently <strong>Leading AI Applied Engineering at Wavestone</strong> as FDE & AI Lab Tech Lead, and teaching neurosciences & AI at HEC Paris / École Polytechnique.
         </p>
         <p class="hero-sub fade-in stagger-3">
-          Currently leading applied AI engineering at Wavestone as FDE & AI Lab Tech Lead, and teaching neurosciences & AI at HEC Paris / École Polytechnique.
+          <strong>Co-founder & CTO of Inclusive Brains</strong> — where I built the brain-computer interface platform that powered the Paris 2024 Olympic flame relay, enabling Nathalie Labrégère to carry the flame using only facial expressions and brainwaves.
+        </p>
+        <p class="hero-sub fade-in stagger-4">
+          <strong>AI work focused on positive impact</strong> — from accessibility and disability inclusion to climate, space, and rare-disease research.
         </p>
         <div class="hero-tags fade-in stagger-4">
           <span class="hero-tag">AI Agents</span>
@@ -965,10 +1200,11 @@
         </div>
       </div>
 
+      <div class="hero-right">
       <div class="hero-card fade-in stagger-2">
         <img src="https://pbs.twimg.com/profile_images/1574430017899077634/mmAGADU4_400x400.jpg" alt="Paul Barbaste" class="hero-photo">
         <div class="hero-card-name">Paul Barbaste</div>
-        <div class="hero-card-role">Senior AI Applied Engineer<br>Senior AI Forward Deployed Engineer · Paris</div>
+        <div class="hero-card-role">Senior AI Applied Engineer<br>Forward Deployed · Paris</div>
         <div class="hero-card-links">
           <a class="hero-card-link" href="#" onclick="this.href='mai'+'lto:'+'paulbarbaste'+'@'+'gmail.com'">
             <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 7 10 7 10-7"/></svg>
@@ -985,12 +1221,22 @@
             GitHub
             <span class="link-arrow">→</span>
           </a>
+          <a class="hero-card-link" href="https://scholar.google.com/citations?hl=fr&view_op=list_works&gmla=AEk_c1sAwb6_DhJi8RKNegkAk1_kE7R5hdqeZSJoyWQ3QtdRj92IL1wIwfcvX3b46ZgrnwbLPl5PRKIBqq7qQw7DnH3vkGFFZjPXHzGfVLZGkrSZTSnTUg7Ykg&user=95WMM3cAAAAJ" target="_blank">
+            <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24"><path d="M5.242 13.769 0 9.5 12 0l12 9.5-5.242 4.269C17.548 11.249 14.978 9.5 12 9.5c-2.977 0-5.548 1.748-6.758 4.269zM12 10a7 7 0 1 0 0 14 7 7 0 0 0 0-14z"/></svg>
+            Google Scholar
+            <span class="link-arrow">→</span>
+          </a>
           <a class="hero-card-link" href="https://patents.google.com/patent/US12554328B2/en" target="_blank">
             <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M9 12h6m-6 4h6m2 5H7a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5.586a1 1 0 0 1 .707.293l5.414 5.414a1 1 0 0 1 .293.707V19a2 2 0 0 1-2 2z"/></svg>
             US Patent
             <span class="link-arrow">→</span>
           </a>
         </div>
+      </div>
+      <div class="hero-eyebrow hero-eyebrow-right fade-in stagger-3">
+        <span class="dot"></span>
+        Forward Deployed Engineer · Paris
+      </div>
       </div>
     </div>
 
@@ -1010,6 +1256,7 @@
     <div class="exp-grid">
       <div class="exp-item fade-in">
         <div class="exp-date">Jan 2025 — Present</div>
+        <div class="exp-logo logo-wavestone">W</div>
         <div>
           <div class="exp-company">Wavestone</div>
           <div class="exp-role">Senior AI Applied Engineer (FDE) & AI Lab Tech Lead</div>
@@ -1021,6 +1268,7 @@
       </div>
       <div class="exp-item fade-in stagger-1">
         <div class="exp-date">2021 — Present</div>
+        <div class="exp-logo logo-inclusive">IB</div>
         <div>
           <div class="exp-company">Inclusive Brains</div>
           <div class="exp-role">CTO & Co-Founder → AI Researcher</div>
@@ -1032,6 +1280,7 @@
       </div>
       <div class="exp-item fade-in stagger-2">
         <div class="exp-date">2023 — Present</div>
+        <div class="exp-logo logo-hec">HEC·X</div>
         <div>
           <div class="exp-company">HEC Paris · École Polytechnique</div>
           <div class="exp-role">Head of Track — Neurosciences & AI</div>
@@ -1040,6 +1289,138 @@
         <div class="exp-arrow">
           <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path d="M7 17 17 7M7 7h10v10"/></svg>
         </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section class="section section-dark" id="skills">
+  <div class="container">
+    <div class="section-eyebrow fade-in">Skills</div>
+    <h2 class="section-title fade-in stagger-1">The <span class="serif">stack</span>.</h2>
+    <p class="section-lede fade-in stagger-2">Production tools I use every day — from agent frameworks and MCP to EEG pipelines and cloud infra.</p>
+
+    <div class="skills-terminal fade-in stagger-3">
+      <div class="terminal-bar">
+        <span class="terminal-dot r"></span>
+        <span class="terminal-dot y"></span>
+        <span class="terminal-dot g"></span>
+        <span class="terminal-filename">~/paul/stack.py</span>
+      </div>
+
+      <div class="terminal-body">
+
+        <div class="skill-block">
+          <div class="skill-block-title">AI Agents & MCP</div>
+          <div class="skill-row">
+            <div class="skill-row-label">frameworks</div>
+            <div class="skill-tokens">
+              <span class="tok">OpenAI_Agents_SDK</span>
+              <span class="tok">LangGraph</span>
+              <span class="tok">BeeAI</span>
+              <span class="tok">Google_ADK</span>
+            </div>
+          </div>
+          <div class="skill-row">
+            <div class="skill-row-label">mcp</div>
+            <div class="skill-tokens">
+              <span class="tok v">FastMCP</span>
+              <span class="tok v">mcp.server</span>
+              <span class="tok v">sub_agents</span>
+              <span class="tok v">skills</span>
+            </div>
+          </div>
+          <div class="skill-row">
+            <div class="skill-row-label">genai_platforms</div>
+            <div class="skill-tokens">
+              <span class="tok m">OpenWebUI</span>
+              <span class="tok m">LibreChat</span>
+              <span class="tok m">n8n</span>
+              <span class="tok m">Langflow</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="skill-block">
+          <div class="skill-block-title">Machine Learning & Data</div>
+          <div class="skill-row">
+            <div class="skill-row-label">import</div>
+            <div class="skill-tokens">
+              <span class="tok">torch</span>
+              <span class="tok">sklearn</span>
+              <span class="tok">keras</span>
+              <span class="tok">qiskit_ml</span>
+              <span class="tok">pandas</span>
+              <span class="tok">numpy</span>
+            </div>
+          </div>
+          <div class="skill-row">
+            <div class="skill-row-label">web</div>
+            <div class="skill-tokens">
+              <span class="tok g">Django</span>
+              <span class="tok g">Next.js</span>
+            </div>
+          </div>
+          <div class="skill-row">
+            <div class="skill-row-label">cloud_devops</div>
+            <div class="skill-tokens">
+              <span class="tok a">GCP</span>
+              <span class="tok a">Azure</span>
+              <span class="tok a">Railway</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="skill-block">
+          <div class="skill-block-title">Neuroscience & BCI</div>
+          <div class="skill-row">
+            <div class="skill-row-label">eeg_stack</div>
+            <div class="skill-tokens">
+              <span class="tok v">mne</span>
+              <span class="tok v">moabb</span>
+              <span class="tok v">braindecode</span>
+              <span class="tok v">timeflux</span>
+            </div>
+          </div>
+          <div class="skill-row">
+            <div class="skill-row-label">methods</div>
+            <div class="skill-tokens">
+              <span class="tok m">riemannian_geometry</span>
+              <span class="tok m">realtime_classification</span>
+              <span class="tok m">multimodal_signals</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="skill-block">
+          <div class="skill-block-title">Strategy & Languages</div>
+          <div class="skill-row">
+            <div class="skill-row-label">management</div>
+            <div class="skill-tokens">
+              <span class="tok a">business_strategy</span>
+              <span class="tok a">project_mgmt</span>
+              <span class="tok a">market_research</span>
+            </div>
+          </div>
+          <div class="skill-row">
+            <div class="skill-row-label">legal_research</div>
+            <div class="skill-tokens">
+              <span class="tok g">patents_review</span>
+              <span class="tok g">corporate_law</span>
+              <span class="tok g">GDPR</span>
+            </div>
+          </div>
+          <div class="skill-row">
+            <div class="skill-row-label">languages</div>
+            <div class="skill-tokens">
+              <span class="tok">english</span>
+              <span class="tok">french</span>
+              <span class="tok">spanish</span>
+            </div>
+          </div>
+        </div>
+
       </div>
     </div>
   </div>
@@ -1058,8 +1439,8 @@
         <span class="project-arrow"><svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M7 17 17 7M7 7h10v10"/></svg></span>
         <span class="project-badge badge-gold">Olympic Games Paris 2024</span>
         <div class="project-label">Prometheus BCI · Agentic Neurotech</div>
-        <div class="project-name">Prometheus BCI — Adaptive AI Neurotech Platform</div>
-        <p class="project-desc">AI Platform powering the exoskeleton that allowed Nathalie Labrégère to carry the Olympic flame using facial expressions and brainwaves.</p>
+        <div class="project-name">Prometheus BCI — Adaptive Neurotech Platform</div>
+        <p class="project-desc">Platform powering the exoskeleton that allowed Nathalie Labrégère to carry the Olympic flame using facial expressions and brainwaves.</p>
         <div class="project-stack">
           <span class="stack-chip">Python</span>
           <span class="stack-chip">EEG</span>
@@ -1134,45 +1515,159 @@
 <section class="section section-light" id="awards">
   <div class="container">
     <div class="section-eyebrow fade-in">Recognition</div>
-    <h2 class="section-title fade-in stagger-1">Awards & <span class="serif">honors</span>.</h2>
-    <p class="section-lede fade-in stagger-2">From international hackathons to inventor lists — recognition for work that ships.</p>
-    <div class="awards-grid">
-      <div class="award-card fade-in">
-        <div class="award-icon">🏆</div>
-        <div class="award-name">IBM Techxchange AI Agent Hackathon</div>
-        <div class="award-org">IBM</div>
-        <span class="award-result">1st place</span>
+    <h2 class="section-title fade-in stagger-1"><span class="serif">Awards</span>.</h2>
+    <p class="section-lede fade-in stagger-2">Hackathons won against production-grade teams, inventor lists, and research grants.</p>
+    <div class="awards-list">
+
+      <div class="awards-subheading fade-in">Coding challenges</div>
+
+      <div class="award-row fade-in">
+        <span class="award-rank rank-gold">1st place</span>
+        <span class="award-year">2025</span>
+        <div>
+          <div class="award-title">IBM TechXchange — AI Agent Hackathon<span class="award-sep">·</span><span class="award-org-inline">IBM</span></div>
+          <div class="award-desc">Winner among ~5,000 developers with <span class="award-project">Climate AI Hive</span>, a multi-agent platform for sustainable cities (SDG 11).</div>
+        </div>
+        <span class="award-mark"></span>
       </div>
-      <div class="award-card fade-in stagger-1">
-        <div class="award-icon">🥈</div>
-        <div class="award-name">HuggingFace MCP & Agent Hackathon</div>
-        <div class="award-org">Hugging Face</div>
-        <span class="award-result">2nd place</span>
+
+      <div class="award-row fade-in stagger-1">
+        <span class="award-rank">2nd place</span>
+        <span class="award-year">2025</span>
+        <div>
+          <div class="award-title">MCP & Agent Hackathon<span class="award-sep">·</span><span class="award-org-inline">Hugging Face</span></div>
+          <div class="award-desc">Silver medal among thousands of teams worldwide with <span class="award-project">Sentinel One</span>, an enterprise agentic security platform.</div>
+        </div>
+        <span class="award-mark"></span>
       </div>
-      <div class="award-card fade-in stagger-2">
-        <div class="award-icon">🌍</div>
-        <div class="award-name">NASA App Challenge</div>
-        <div class="award-org">NASA</div>
-        <span class="award-result">Global Nominee</span>
+
+      <div class="award-row fade-in stagger-2">
+        <span class="award-rank">Finalist</span>
+        <span class="award-year">2025</span>
+        <div>
+          <div class="award-title">Call for Code<span class="award-sep">·</span><span class="award-org-inline">United Nations · IBM</span></div>
+          <div class="award-desc">Finalist (pending jury) among 50,000+ participants with an <span class="award-project">AI Climate agent</span>.</div>
+        </div>
+        <span class="award-mark"></span>
       </div>
-      <div class="award-card fade-in stagger-3">
-        <div class="award-icon">📰</div>
-        <div class="award-name">Top 100 French Inventors — AI Category</div>
-        <div class="award-org">Le Point</div>
-        <span class="award-result">Top 100</span>
+
+      <div class="award-row fade-in stagger-3">
+        <span class="award-rank">Global Nominee (top 1%)</span>
+        <span class="award-year">2025</span>
+        <div>
+          <div class="award-title">Space Apps Challenge<span class="award-sep">·</span><span class="award-org-inline">NASA</span></div>
+          <div class="award-desc">Global nominee among 105,000+ participants worldwide with <span class="award-project">The Astronomists</span>, an agentic space-data platform.</div>
+        </div>
+        <span class="award-mark"></span>
       </div>
-      <div class="award-card fade-in stagger-4">
-        <div class="award-icon">🎓</div>
-        <div class="award-name">X-GRANT High Impact & X-IMPACT Tech</div>
-        <div class="award-org">Fondation Polytechnique</div>
-        <span class="award-result">Laureate</span>
+
+      <div class="awards-subheading fade-in">Awards & grants</div>
+
+      <div class="award-row fade-in stagger-3">
+        <span class="award-rank">Top 100</span>
+        <span class="award-year">2024</span>
+        <div>
+          <div class="award-title">French Inventors — AI category<span class="award-sep">·</span><span class="award-org-inline">Le Point</span></div>
+          <div class="award-desc">Listed in France's top 100 inventors for the AI category for the work on <span class="award-project">Inclusive Brains</span> brain-computer interfaces.</div>
+        </div>
+        <span class="award-mark"></span>
       </div>
-      <div class="award-card fade-in stagger-5">
-        <div class="award-icon">💡</div>
-        <div class="award-name">Prix Coup de Pouce</div>
-        <div class="award-org">HEC · Fondation Le Roch</div>
-        <span class="award-result">Laureate</span>
+
+      <div class="award-row fade-in stagger-4">
+        <span class="award-rank">Laureate</span>
+        <span class="award-year">2023</span>
+        <div>
+          <div class="award-title">X-GRANT High Impact & X-IMPACT Tech<span class="award-sep">·</span><span class="award-org-inline">Fondation Polytechnique</span></div>
+          <div class="award-desc">Research grant awarded by École Polytechnique's foundation to support <span class="award-project">Inclusive Brains</span>' BCI platform for disability inclusion.</div>
+        </div>
+        <span class="award-mark"></span>
       </div>
+
+      <div class="award-row fade-in stagger-5">
+        <span class="award-rank">Laureate</span>
+        <span class="award-year">2022</span>
+        <div>
+          <div class="award-title">Prix Coup de Pouce<span class="award-sep">·</span><span class="award-org-inline">HEC · Fondation Le Roch</span></div>
+          <div class="award-desc">HEC Paris entrepreneurship prize supporting the early stage of <span class="award-project">Inclusive Brains</span>.</div>
+        </div>
+        <span class="award-mark"></span>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- MEDIA -->
+<section class="section section-light" id="media">
+  <div class="container">
+    <div class="section-eyebrow fade-in">Media</div>
+    <h2 class="section-title fade-in stagger-1">As seen in the <span class="serif">press</span>.</h2>
+    <p class="section-lede fade-in stagger-2">Selected features and interviews covering brain-computer interfaces, agentic AI, and neurotech.</p>
+    <div class="media-list">
+
+      <a class="media-item fade-in" href="https://www.thenationalnews.com/business/2025/06/03/ibm-and-inclusive-brains-team-up-to-develop-mind-controlled-computing/" target="_blank">
+        <div class="media-date">Jun 2025</div>
+        <div>
+          <div class="media-title"><span class="media-outlet-badge">The National</span><span class="media-title-text">IBM and Inclusive Brains team up to develop mind-controlled computing</span></div>
+          <div class="media-excerpt">Coverage of the research collaboration bringing together AI, quantum computing and neurotechnologies.</div>
+        </div>
+        <div class="media-arrow"><svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M7 17 17 7M7 7h10v10"/></svg></div>
+      </a>
+
+      <a class="media-item fade-in stagger-1" href="https://newsroom.ibm.com/2025-06-03-ibm-and-inclusive-brains-bring-together-ai,-quantum-and-neurotechnologies-to-improve-the-understanding-of-brain-machine-interfaces" target="_blank">
+        <div class="media-date">Jun 2025</div>
+        <div>
+          <div class="media-title"><span class="media-outlet-badge">IBM Newsroom</span><span class="media-title-text">IBM × Inclusive Brains — AI, Quantum and Neurotech for brain-machine interfaces</span></div>
+          <div class="media-excerpt">Official announcement of the joint research program between IBM and Inclusive Brains.</div>
+        </div>
+        <div class="media-arrow"><svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M7 17 17 7M7 7h10v10"/></svg></div>
+      </a>
+
+      <a class="media-item fade-in stagger-2" href="https://hecstories.fr/en/paul-barbaste-m-21-en-pleine-neuro-science-fiction/" target="_blank">
+        <div class="media-date">2024</div>
+        <div>
+          <div class="media-title"><span class="media-outlet-badge">HEC Stories</span><span class="media-title-text">Paul Barbaste — Deep into Neuro Science-Fiction</span></div>
+          <div class="media-excerpt">Long-form profile on the path from Sciences Po and HEC to co-founding Inclusive Brains.</div>
+        </div>
+        <div class="media-arrow"><svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M7 17 17 7M7 7h10v10"/></svg></div>
+      </a>
+
+      <a class="media-item fade-in stagger-3" href="https://www.allianz-trade.com/en_global/news-insights/news/mind-controlled-keyboard.html" target="_blank">
+        <div class="media-date">2024</div>
+        <div>
+          <div class="media-title"><span class="media-outlet-badge">Allianz Trade</span><span class="media-title-text">Prometheus — Mind-controlled keyboard for workplace inclusion</span></div>
+          <div class="media-excerpt">Partnership launch featuring the BCI platform that enables hands-free computer interaction.</div>
+        </div>
+        <div class="media-arrow"><svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M7 17 17 7M7 7h10v10"/></svg></div>
+      </a>
+
+      <a class="media-item fade-in stagger-4" href="https://www.unistra.fr/actualites-unistra/vie-des-campus/paul-barbaste-la-force-de-lia-est-avec-lui" target="_blank">
+        <div class="media-date">2024</div>
+        <div>
+          <div class="media-title"><span class="media-outlet-badge">Université de Strasbourg</span><span class="media-title-text">Paul Barbaste — la force de l'IA est avec lui</span></div>
+          <div class="media-excerpt">Portrait d'un parcours entre cybersécurité, IA appliquée et neurotechnologies.</div>
+        </div>
+        <div class="media-arrow"><svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M7 17 17 7M7 7h10v10"/></svg></div>
+      </a>
+
+      <a class="media-item fade-in stagger-5" href="https://www.wavestone.com/en/insight/agentic-ai-playbook/" target="_blank">
+        <div class="media-date">2025</div>
+        <div>
+          <div class="media-title"><span class="media-outlet-badge">Wavestone Insights</span><span class="media-title-text">Agentic AI Playbook — Understanding the AI agent revolution</span></div>
+          <div class="media-excerpt">Co-authored playbook on how enterprises should approach agentic AI, from MVP to production.</div>
+        </div>
+        <div class="media-arrow"><svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M7 17 17 7M7 7h10v10"/></svg></div>
+      </a>
+
+      <a class="media-item fade-in stagger-6" href="https://fondationleroch-lesmousquetaires.org/portraits-entrepreneurs/paul-barbaste/" target="_blank">
+        <div class="media-date">2023</div>
+        <div>
+          <div class="media-title"><span class="media-outlet-badge">Fondation Le Roch</span><span class="media-title-text">Portrait d'entrepreneur — Paul Barbaste</span></div>
+          <div class="media-excerpt">Retour sur le lauréat du Prix Coup de Pouce et son travail à l'intersection IA · neurosciences.</div>
+        </div>
+        <div class="media-arrow"><svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M7 17 17 7M7 7h10v10"/></svg></div>
+      </a>
+
     </div>
   </div>
 </section>
